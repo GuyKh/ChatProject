@@ -8,7 +8,7 @@ using System.Text;
 namespace ServerChatService
 {
     [ServiceContract(Namespace = "http://ServerChatService.Service",
-    SessionMode = SessionMode.Required, CallbackContract = typeof(IChatService))]
+    SessionMode = SessionMode.Required, CallbackContract = typeof(IChatContract))]
     public interface IChatService
     {
         [OperationContract(IsOneWay = false, IsInitiating = true)]

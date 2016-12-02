@@ -24,6 +24,9 @@
   <wsdl:message name="IChatService_PublishMessage_OutputMessage">
     <wsdl:part name="parameters" element="tns:PublishMessageResponse" />
   </wsdl:message>
+  <wsdl:message name="IChatService_MessagePosted_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:MessagePosted" />
+  </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IChatService">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Subscribe">
       <wsdl:input wsaw:Action="http://ServerChatService.Service/IChatService/Subscribe" message="tns:IChatService_Subscribe_InputMessage" />
@@ -37,17 +40,8 @@
       <wsdl:input wsaw:Action="http://ServerChatService.Service/IChatService/PublishMessage" message="tns:IChatService_PublishMessage_InputMessage" />
       <wsdl:output wsaw:Action="http://ServerChatService.Service/IChatService/PublishMessageResponse" message="tns:IChatService_PublishMessage_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Subscribe">
-      <wsdl:output wsaw:Action="http://ServerChatService.Service/IChatService/Subscribe" message="tns:IChatService_Subscribe_InputMessage" />
-      <wsdl:input wsaw:Action="http://ServerChatService.Service/IChatService/SubscribeResponse" message="tns:IChatService_Subscribe_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Unsubscribe">
-      <wsdl:output wsaw:Action="http://ServerChatService.Service/IChatService/Unsubscribe" message="tns:IChatService_Unsubscribe_InputMessage" />
-      <wsdl:input wsaw:Action="http://ServerChatService.Service/IChatService/UnsubscribeResponse" message="tns:IChatService_Unsubscribe_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="PublishMessage">
-      <wsdl:output wsaw:Action="http://ServerChatService.Service/IChatService/PublishMessage" message="tns:IChatService_PublishMessage_InputMessage" />
-      <wsdl:input wsaw:Action="http://ServerChatService.Service/IChatService/PublishMessageResponse" message="tns:IChatService_PublishMessage_OutputMessage" />
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="MessagePosted">
+      <wsdl:output wsaw:Action="http://ServerChatService.Service/IChatService/MessagePosted" message="tns:IChatService_MessagePosted_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

@@ -28,23 +28,17 @@ namespace ServiceHost.ServiceReference1 {
         System.Threading.Tasks.Task UnsubscribeAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ServerChatService.Service/IChatService/PublishMessage", ReplyAction="http://ServerChatService.Service/IChatService/PublishMessageResponse")]
-        void PublishMessage(string text);
+        void PublishMessage(string username, string text);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ServerChatService.Service/IChatService/PublishMessage", ReplyAction="http://ServerChatService.Service/IChatService/PublishMessageResponse")]
-        System.Threading.Tasks.Task PublishMessageAsync(string text);
+        System.Threading.Tasks.Task PublishMessageAsync(string username, string text);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IChatServiceCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://ServerChatService.Service/IChatService/Subscribe", ReplyAction="http://ServerChatService.Service/IChatService/SubscribeResponse")]
-        void Subscribe();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://ServerChatService.Service/IChatService/Unsubscribe", ReplyAction="http://ServerChatService.Service/IChatService/UnsubscribeResponse")]
-        void Unsubscribe();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://ServerChatService.Service/IChatService/PublishMessage", ReplyAction="http://ServerChatService.Service/IChatService/PublishMessageResponse")]
-        void PublishMessage(string text);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://ServerChatService.Service/IChatService/MessagePosted")]
+        void MessagePosted(string username, string text);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -91,12 +85,12 @@ namespace ServiceHost.ServiceReference1 {
             return base.Channel.UnsubscribeAsync();
         }
         
-        public void PublishMessage(string text) {
-            base.Channel.PublishMessage(text);
+        public void PublishMessage(string username, string text) {
+            base.Channel.PublishMessage(username, text);
         }
         
-        public System.Threading.Tasks.Task PublishMessageAsync(string text) {
-            return base.Channel.PublishMessageAsync(text);
+        public System.Threading.Tasks.Task PublishMessageAsync(string username, string text) {
+            return base.Channel.PublishMessageAsync(username, text);
         }
     }
 }

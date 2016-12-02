@@ -37,14 +37,8 @@ namespace ChatClient.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IChatServiceCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://ServerChatService.Service/IChatService/Subscribe", ReplyAction="http://ServerChatService.Service/IChatService/SubscribeResponse")]
-        void Subscribe();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://ServerChatService.Service/IChatService/Unsubscribe", ReplyAction="http://ServerChatService.Service/IChatService/UnsubscribeResponse")]
-        void Unsubscribe();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://ServerChatService.Service/IChatService/PublishMessage", ReplyAction="http://ServerChatService.Service/IChatService/PublishMessageResponse")]
-        void PublishMessage(string username, string text);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://ServerChatService.Service/IChatService/MessagePosted")]
+        void MessagePosted(string username, string text);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
